@@ -4,7 +4,8 @@ jobs:
   labelWhenApproved:
     runs-on: ubuntu-latest
     steps:
-    - uses: pullreminders/label-when-approved-action@master
+    - name: Label when approved
+      uses: pullreminders/label-when-approved-action@master
       env:
         APPROVALS: "1"
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
