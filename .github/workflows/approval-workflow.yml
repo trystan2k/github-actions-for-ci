@@ -10,4 +10,6 @@ jobs:
     steps:
       - uses: pullreminders/label-when-approved-action@master
       - name: Label when approved
+        run: |
+          npm install
 
