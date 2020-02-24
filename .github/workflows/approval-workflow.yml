@@ -1,6 +1,6 @@
 name: Node CI
 
-on: [push]
+on: [pull_request_review]
 
 jobs:
   build:
@@ -16,4 +16,4 @@ jobs:
         with:
           name: webpack artifacts
           path: public/
-          
+
