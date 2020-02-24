@@ -1,15 +1,14 @@
-name: Node CI
-
-on: [pull_request_review]
-
+on: pull_request_review
+name: Label approved pull requests
 jobs:
   labelWhenApproved:
-
+    name: Label when approved
     runs-on: ubuntu-latest
-
     steps:
-      - uses: pullreminders/label-when-approved-action@master
-      - name: Label when approved
-        run: |
-          npm install
-
+    - name: Label when approved
+      uses: pullreminders/label-when-approved-action@master
+      env:
+        APPROVALS: "2"
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ADD_LABEL: "approved"
+        REMOVE_LABEL: "awaiting%20review"
