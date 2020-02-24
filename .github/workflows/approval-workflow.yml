@@ -1,12 +1,19 @@
-name: Team awesome's approval workflow
-on: pull_request_review
+name: Node CI
+
+on: [push]
+
 jobs:
-  labelWhenApproved:
+  build:
+
     runs-on: ubuntu-latest
+
     steps:
-    - name: Label when approved
-    - uses: pullreminders/label-when-approved-action@master
-      env:
-        APPROVALS: "1"
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        ADD_LABEL: "approved"
+      - uses: actions/checkout@v1
+      - name: npm install and build webpack
+        run: |
+          npm install
+      - uses: actions/upload-artifact@master
+        with:
+          name: webpack artifacts
+          path: public/
+          
